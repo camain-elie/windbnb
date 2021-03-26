@@ -1,18 +1,52 @@
-import './App.css';
-import Stay from './components/Stay'
+import React, { Component } from 'react'
+import stays from './stays'
 
-function App() {
-  return (
-    <div className="App">
-    
-      <Stay city="Turku" country="Finland" superhost="true"
-        title="Nice apartment in center of Helsinski"
-        rating="4.2" maxGuests="5" type="Entire apartment"
-        beds={3}
-        photo="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
-      />
-    </div>
-  );
+import './App.css';
+
+import Stay from './components/Stay'
+import SearchBar from './components/SearchBar'
+
+
+class App extends Component {
+
+  state = {
+    stays: this.generateCards(),
+
+  }
+
+
+  generateCards(){
+
+  }
+
+
+
+  render(){
+    return (
+      <div className="App">
+        <SearchBar />
+
+        <div className="stays">
+          {stays.map((data, key) => 
+          <Stay key={key} city={data.city} country={data.country}
+            superHost={data.superHost} title={data.title}
+            rating={data.rating} maxGuests={data.maxGuests}
+            type={data.type} beds={data.beds}
+            photo={data.photo} />
+          
+            
+
+          )}
+        </div>
+  
+        
+      </div>
+    )
+  }
 }
+
+
+
+
 
 export default App;
