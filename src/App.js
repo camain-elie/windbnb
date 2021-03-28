@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import stays from './stays'
 
-import './App.css';
+import './App.scss';
 
 import Stay from './components/Stay'
 import SearchBar from './components/SearchBar'
@@ -11,7 +11,8 @@ class App extends Component {
 
   state = {
     stays: this.generateCards(),
-
+    displayedStays: stays,
+    numberOfStays: 0,
   }
 
 
@@ -27,6 +28,10 @@ class App extends Component {
         <SearchBar />
 
         <div className="stays">
+          <div className="stays__header">
+            <h1 className="stays__title">Stays in Finland</h1>
+            <p className="stays__number">{`${this.state.numberOfStays} stay${this.state.numberOfStays > 1 ? 's' : ''}`}</p>
+          </div>
           {stays.map((data, key) => 
           <Stay key={key} city={data.city} country={data.country}
             superHost={data.superHost} title={data.title}

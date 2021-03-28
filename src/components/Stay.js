@@ -12,7 +12,7 @@ const Stay = ({city, country, superHost, title, rating, maxGuests, type, beds, p
             <div className="stay__properties">
                 <div className="stay__description">
                     {superHost && <div className="stay__superhost"><p>SUPER HOST</p></div>}
-                    <div className="stay__type">{`${type} ${type === "Entire apartment" ?
+                    <div className="stay__type">{`${type} ${type === "Entire apartment" && beds !== null ?
                         (beds === 1 || beds === 0 ? ` . ${beds} bed` : ` . ${beds} beds`) : ''}`}</div>
                     <div className="stay__rating">{rating}</div>
                 </div>

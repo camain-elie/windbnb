@@ -1,0 +1,100 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.searchbar{
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+
+    &__logo{
+        width: 200px;
+        display: inline-block;
+    }
+    &__inputs{
+        display: inline-block;
+        width: 400px;;
+        height: 55px;
+        
+
+        ::placeholder{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            color: #BDBDBD;
+        }
+    }
+    &__location, &__guests, &__button{
+        box-sizing: border-box;
+        &:hover{
+            border: solid 1px #CDCDCD;
+        }
+        &:focus{
+            border: 1px solid #EB5757;
+        }
+    }
+    &__location{
+        height: 55px;
+        background: #FFFFFF;
+        box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 16px 0 0 16px;
+        border: none;
+        padding: 0 12px;
+        width: 140px;
+    }
+    &__guests{
+        height: 55px;
+        width: 140px;
+        background: #FFFFFF;
+        box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+        border: none;
+        padding: 0 12px;
+    }
+    &__button{
+
+        height: 55px;
+        width: 50px;
+        background: #FFFFFF;
+        box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 0 16px 16px 0;
+        border: none;
+      
+        
+    }
+    &__search-icon{
+        width: 13px;
+        margin: 0;
+        padding: 0;
+    }
+    &__filter{
+        display: none;
+    }
+
+    &--active{
+        height: 300px;
+        z-index: 2;
+        /*.searchbar__filter{
+            display: block;
+            height: 10000%;
+            width: 2000px;
+            background: rgba(79, 79, 79, 0.4);;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        
+            z-index: 1;
+        }*/
+    }
+}
+
+::-moz-focus-inner{
+    border: none;
+}
+:focus{
+    outline: none;
+}

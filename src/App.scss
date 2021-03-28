@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.App{
+    margin: 0 100px;
+
+}
+
+.searchbar{
+    height: 100%;
+}
+
+.stays{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+    &__header{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        margin: 0 20px;
+    }
+    &__title, &__number{
+        display: inline-block;
+    }
+}
