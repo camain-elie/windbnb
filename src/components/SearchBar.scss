@@ -8,6 +8,11 @@ $hover-color: #F3F3F3;
 $active-color: #DEDEDE;
 $logo-color: #EB5757;
 
+@mixin searchbar-transition {
+    transition: 0.3s;
+}
+
+
 *{
     padding: 0;
     margin: 0;
@@ -27,8 +32,10 @@ $logo-color: #EB5757;
     }
     &__location{
         border-radius: 16px 0 0 16px;
+        
         &-list{
             list-style: none;
+            margin: 40px 0;
             ul{
                
                
@@ -47,7 +54,17 @@ $logo-color: #EB5757;
     }
     &__button{
         border-radius: 0 16px 16px 0;
+        p, i {
+            display: inline-block;
+            
+        }
         p{
+            position: relative;
+            top: 8px;
+            
+        }
+        i{
+            margin-right: 8px;
             position: relative;
             top: 50%;
             transform: translateY(-50%);
@@ -62,6 +79,7 @@ $logo-color: #EB5757;
     }
     .placeholder{
         color: $light-text-color;
+
     }
         
     
@@ -117,11 +135,12 @@ $logo-color: #EB5757;
 
     &--active{
         height: 400px;
-        transition: 2s;
+        @include searchbar-transition;
         position: relative;
+        overflow: display;
         .searchbar__location, .searchbar__guests{
             width: 500px;
-            transition: 2s;
+            @include searchbar-transition;
         }
         .searchbar__location{
             
@@ -133,7 +152,7 @@ $logo-color: #EB5757;
                 position: absolute;
                 top: 0;
                 right: 0;
-                transition: 2s;
+                @include searchbar-transition;
             }
             &__button{
                 color: white;
@@ -142,19 +161,29 @@ $logo-color: #EB5757;
                 border-radius: 16px;
                 text-align: center;
                 margin-left: 40px;
-                transition: 2s;
+                @include searchbar-transition;
+                
                 p{
-                    position: relative;
-                    top: 50%;
-                    transform: translateY(-50%);
+                    font-size: 16px;
+                    @include searchbar-transition;
                 }
+            }
+            &__label, &__guests-text, &__location-text{
+                margin: 2px 5px 0 20px;
             }
             &__guests{
                 border-radius: 0 16px 16px 0;
+                @include searchbar-transition;
+            }
+            &__change-guests{
+                animation: list-animation 0.3s ease-out both;
+                margin: 45px 0 0 20px;
             }
             &__location-list{
                 
-                transition: 2s;
+                ul{
+                    animation: list-animation 0.3s ease-out both;
+                }
             }
         }
     }
@@ -162,31 +191,57 @@ $logo-color: #EB5757;
     &--inactive{
         position: relative;
 
-        height: 120px;
+        height: 180px;
 
-        transition: 2s;
+        @include searchbar-transition;
+        overflow: hidden;
 
 
 
         .searchbar{
             &__inputs{
+                display: flex;
+                flex-wrap: wrap;
                 position: absolute;
                 top: 0;
                 right: 0;
                 transition: 2s
             }
             &__location, &__guests{
-                width: 120px;
-                transition: 2s;
+                width: 140px;
+                @include searchbar-transition;
             }
             &__location{
-                
+                ul{
+                    
+                }
           
+            }
+            &__guests-text, &__location-text{
+                margin: 2px 5px 0 20px;
             }
             &__change-guests, &__location-list, &__label{
             
                 display: none;
-                transition: 2s;
+                @include searchbar-transition;
+            }
+
+            &__button{
+                width: 55px;
+                @include searchbar-transition;
+                text-align: center;
+                
+                p{
+                    display: none;
+                    @include searchbar-transition;
+                    font-size: 16px;
+                    
+                }
+                i{
+                    
+                    @include searchbar-transition;
+                    
+                }
             }
         }
     }
@@ -205,15 +260,18 @@ $logo-color: #EB5757;
     outline: none;
 }
 
-@keyframes searchbar-animation {
+@keyframes list-animation {
     0%{
-        background: red;
-        width: 40%;
+       
+  
+        position: relative;
+        top: -500px;
     }
 
     100%{
-        background: green;
-        height: 200px;
-        width: 100%;
+       
+    
+        position: relative;
+        top: 0px;
     }
 }
