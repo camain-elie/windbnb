@@ -1,13 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+@import '~material-design-icons/iconfont/material-icons.css';
+
+$dark-text-color: #333333;
+$medium-text-color: #828282;
+$light-text-color: #BDBDBD;
+$hover-color: #F3F3F3;
+$active-color: #DEDEDE;
+$logo-color: #EB5757;
+
 *{
     padding: 0;
     margin: 0;
 }
 
 .searchbar{
+    font-family: 'Mulish', sans-serif;
+   
+    
+    &__inputs, &__logo{
+        margin: 40px ;
+    }
+    &__location, &__guests, &__button{
+        box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        height: 55px;
+    }
+    &__location{
+        border-radius: 16px 0 0 16px;
+        &-list{
+            list-style: none;
+            ul{
+               
+               
+                font-size: 14px;
+                margin: 25px 0 10px 20px;
+
+                color: #4F4F4F;
+                cursor: pointer;
+                i{
+                    margin-right: 8px;
+                    position: relative;
+                    top: 5px;
+                }
+            }
+        }
+    }
+    &__button{
+        border-radius: 0 16px 16px 0;
+        p{
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    &__label{
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+    }
+    .placeholder{
+        color: $light-text-color;
+    }
+        
+    
+
+    &__change-guests{
+        width: 140px;
+        margin-top: 30px;
+        .label{
+            color: $dark-text-color;
+            font-weight: bold;
+        }
+        .placeholder{
+            color: $light-text-color;
+            font-weight: bold;
+            margin: 0 0 14px 0;
+        }
+        .number-button{
+            &__variator, &__display{
+                display: inline-block;
+            }
+            &__variator{
+                width: 23px;
+                height: 23px;
+                border-radius: 4px;
+                border: 1px solid $medium-text-color;
+                box-sizing: border-box;
+                text-align: center;
+                color: $medium-text-color;
+                user-select: none;
+                &:hover{
+                    background: $hover-color;
+                    cursor: pointer;
+                }
+                &:active{
+                    color: $logo-color;
+                    cursor: pointer;
+                    background: #FFFFFF;
+                    border-color: $logo-color;
+                }
+            }
+            &__display{
+                color: $dark-text-color;
+                width: 9px;
+                height: 18px;
+                font-weight: bold;
+                font-size: 14px;
+            
+                margin: 0 10px;
+            }
+        }
+
+    }
+
+    &--active{
+        height: 400px;
+        transition: 2s;
+        position: relative;
+        .searchbar__location, .searchbar__guests{
+            width: 500px;
+            transition: 2s;
+        }
+        .searchbar__location{
+            
+        }
+        .searchbar{
+            &__inputs{
+                display: flex;
+                flex-wrap: wrap;
+                position: absolute;
+                top: 0;
+                right: 0;
+                transition: 2s;
+            }
+            &__button{
+                color: white;
+                background: $logo-color;
+                width: 120px;
+                border-radius: 16px;
+                text-align: center;
+                margin-left: 40px;
+                transition: 2s;
+                p{
+                    position: relative;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            &__guests{
+                border-radius: 0 16px 16px 0;
+            }
+            &__location-list{
+                
+                transition: 2s;
+            }
+        }
+    }
+
+    &--inactive{
+        position: relative;
+
+        height: 120px;
+
+        transition: 2s;
 
 
 
-
+        .searchbar{
+            &__inputs{
+                position: absolute;
+                top: 0;
+                right: 0;
+                transition: 2s
+            }
+            &__location, &__guests{
+                width: 120px;
+                transition: 2s;
+            }
+            &__location{
+                
+          
+            }
+            &__change-guests, &__location-list, &__label{
+            
+                display: none;
+                transition: 2s;
+            }
+        }
+    }
 }
 
 
@@ -33,15 +215,5 @@
         background: green;
         height: 200px;
         width: 100%;
-    }
-}
-
-@keyframes input-animation {
-    0%{
-        width: 20%;
-    }
-
-    100%{
-        width: 40%;
     }
 }

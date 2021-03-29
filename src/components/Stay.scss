@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import '~material-design-icons/iconfont/material-icons.css';
 
 $rating-color: #4F4F4F;
 
@@ -57,7 +58,17 @@ $rating-color: #4F4F4F;
     }
     &__rating{
         float: right;
-        color: $rating-color
+        color: $rating-color;
+        padding: 0;
+   
+       
+        i{
+            color: #EB5757;
+            margin-right: 5px;
+            font-size: 1.3em;
+            position: relative;
+            top: 4px;
+        }
     }
     &__type{
         //float: left;
