@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 
+
 import './SearchBar.scss'
 
 class SearchBar extends Component {
@@ -13,6 +14,46 @@ class SearchBar extends Component {
 
     handleSearchClick(e){
         this.setState({ isActive: !this.state.isActive })
+      
+        e.stopPropagation()
+    }
+
+    setLocation(e){
+        const location = e.target.innerText.replace(/([a-z_]*)([A-Z])([a-z]*)/,"$2$3")
+        
+        console.log(location)
+        this.setState({ location: location })
+        e.stopPropagation()
+    }
+
+    removeLocation(e){
+        this.setState({ location: '' })
+        e.stopPropagation();   
+    }
+
+    updateGuests(){
+        this.setState({ guests: this.state.adults + this.state.children })
+    }
+    
+    addAdultGuest(e){
+        this.setState({ adults: this.state.adults + 1}, this.updateGuests)
+        e.stopPropagation()
+    }
+
+    addChildGuest(e){
+        console.log(this.state.children)
+        this.setState({ children: this.state.children + 1},this.updateGuests)
+        e.stopPropagation()
+    }
+
+    removeAdultGuest(e){
+        this.setState({ adults: this.state.adults - 1}, this.updateGuests)
+        e.stopPropagation()
+    }
+
+    removeChildGuest(e){
+        this.setState({ children: this.state.children - 1}, this.updateGuests)
+        e.stopPropagation()
     }
 
     render(){
@@ -27,23 +68,23 @@ class SearchBar extends Component {
                         <p className={`searchbar__location-text ${this.state.location ? '' : 'placeholder'}`}>{this.state.location ? this.state.location : 'Add location'}</p>
                     
                         <li className="searchbar__location-list">
-                            <ul>
-                                <i className="material-icons">highlight_off</i>
-                                Every results
+                            <ul vname=" h" onClick={this.removeLocation.bind(this)}>
+                                <i className="material-icons" >highlight_off</i>
+                                Show every results
                             </ul>
-                            <ul>
+                            <ul vname=" h" onClick={this.setLocation.bind(this)}>
                                 <i className="material-icons">room</i>
                                 Helsinki, Finland
                             </ul>
-                            <ul>
+                            <ul onClick={this.setLocation.bind(this)}>
                                 <i className="material-icons">room</i>
                                 Turku, Finland
                             </ul>
-                            <ul>
+                            <ul onClick={this.setLocation.bind(this)}>
                                 <i className="material-icons">room</i>
                                 Oulu, Finland
                             </ul>
-                            <ul>
+                            <ul onClick={this.setLocation.bind(this)}>
                                 <i className="material-icons">room</i>
                                 Vaasa, Finland
                             </ul>
@@ -60,18 +101,18 @@ class SearchBar extends Component {
                             <p className="label">Adults</p>
                             <p className="placeholder">Ages 13 or above</p>
                             <div className="number-button">
-                                <p className="number-button__variator">-</p>
-                                <p className="number-button__display">{this.state.children}</p>
-                                <p className="number-button__variator">+</p>
+                                <p className="number-button__variator" onClick={this.removeAdultGuest.bind(this)}>-</p>
+                                <p className="number-button__display">{this.state.adults}</p>
+                                <p className="number-button__variator" onClick={this.addAdultGuest.bind(this)}>+</p>
                             </div>
                         </div>
                         <div className="searchbar__change-guests">
                             <p className="label">Children</p>
                             <p className="placeholder">Ages 2-12</p>
                             <div className="number-button">
-                                <p className="number-button__variator">-</p>
-                                <p className="number-button__display">{this.state.adults}</p>
-                                <p className="number-button__variator">+</p>
+                                <p className="number-button__variator" onClick={this.removeChildGuest.bind(this)}>-</p>
+                                <p className="number-button__display">{this.state.children}</p>
+                                <p className="number-button__variator" onClick={this.addChildGuest.bind(this)}>+</p>
                             </div>
                         </div>
                     </div>
