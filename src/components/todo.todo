@@ -1,5 +1,10 @@
 - [] active display of guests and location setters
 - [] hover and focus on inputs
-- [] link searchbar to stays
+- [x] link searchbar to stays
 - [] number of stays
 - [] dark filter on stays when searchbar is active
+- [] control guests value in searchbar and create a visual cue on guests button
+- [] figure out what's going on with the assets path
+- [x] use dataset instead of this ugly regexp to set location
+- [] mobile view
+- [] applying search parameters

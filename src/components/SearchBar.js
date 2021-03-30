@@ -1,15 +1,19 @@
 import React, {Component} from 'react'
-
+import PropTypes from 'prop-types'
 
 import './SearchBar.scss'
 
 class SearchBar extends Component {
-    state = {
-        location: '',
-        guests: 0,
-        adults: 0,
-        children: 0,
-        isActive: false,
+    constructor(fun){
+        super(fun)
+        this.state = {
+            location: '',
+            guests: 0,
+            adults: 0,
+            children: 0,
+            isActive: false,
+            searchFunction: this.props.searchFunction,
+        }
     }
 
     handleSearchClick(e){
@@ -19,10 +23,7 @@ class SearchBar extends Component {
     }
 
     setLocation(e){
-        const location = e.target.innerText.replace(/([a-z_]*)([A-Z])([a-z]*)/,"$2$3")
-        
-        console.log(location)
-        this.setState({ location: location })
+        this.setState({ location: e.target.dataset.location })
         e.stopPropagation()
     }
 
@@ -41,7 +42,6 @@ class SearchBar extends Component {
     }
 
     addChildGuest(e){
-        console.log(this.state.children)
         this.setState({ children: this.state.children + 1},this.updateGuests)
         e.stopPropagation()
     }
@@ -65,26 +65,26 @@ class SearchBar extends Component {
                 <div className="searchbar__inputs" onClick={this.handleSearchClick.bind(this)}>
                     <div className="searchbar__location">
                         <p className="searchbar__label">LOCATION</p>
-                        <p className={`searchbar__location-text ${this.state.location ? '' : 'placeholder'}`}>{this.state.location ? this.state.location : 'Add location'}</p>
+                        <p className={`searchbar__location-text ${this.state.location ? '' : 'placeholder'}`}>{this.state.location ? `${this.state.location}, Finland` : 'Add location'}</p>
                     
                         <li className="searchbar__location-list">
-                            <ul vname=" h" onClick={this.removeLocation.bind(this)}>
+                            <ul data-location="" onClick={this.removeLocation.bind(this)}>
                                 <i className="material-icons" >highlight_off</i>
                                 Show every results
                             </ul>
-                            <ul vname=" h" onClick={this.setLocation.bind(this)}>
+                            <ul data-location="Helsinki" onClick={this.setLocation.bind(this)}>
                                 <i className="material-icons">room</i>
                                 Helsinki, Finland
                             </ul>
-                            <ul onClick={this.setLocation.bind(this)}>
+                            <ul data-location="Turku" onClick={this.setLocation.bind(this)}>
                                 <i className="material-icons">room</i>
                                 Turku, Finland
                             </ul>
-                            <ul onClick={this.setLocation.bind(this)}>
+                            <ul data-location="Oulu" onClick={this.setLocation.bind(this)}>
                                 <i className="material-icons">room</i>
                                 Oulu, Finland
                             </ul>
-                            <ul onClick={this.setLocation.bind(this)}>
+                            <ul data-location="Vaasa" onClick={this.setLocation.bind(this)}>
                                 <i className="material-icons">room</i>
                                 Vaasa, Finland
                             </ul>
@@ -117,7 +117,7 @@ class SearchBar extends Component {
                         </div>
                     </div>
 
-                    <div className="searchbar__button" >
+                    <div className="searchbar__button" onClick={this.state.searchFunction(this.state.guests)}>
                         <i className="material-icons">search</i>
                         <p className="searchbar__button-text">Search</p>    
                     </div>
@@ -126,19 +126,13 @@ class SearchBar extends Component {
             
             </div>
 
-
-
-
-            
-                
-
-
-
         )
     }
 }
 
-
+SearchBar.propTypes = {
+    searchFunction: PropTypes.func.isRequired,
+}
 
 
 export default SearchBar

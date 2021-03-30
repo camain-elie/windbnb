@@ -20,12 +20,15 @@ class App extends Component {
 
   }
 
-
+  searchFunc = (e) => {
+    console.log(e)
+    
+  }
 
   render(){
     return (
       <div className="App">
-        <SearchBar />
+        <SearchBar searchFunction={this.searchFunc}/>
 
         <div className="stays">
           <div className="stays__header">
