@@ -25,4 +25,14 @@ const Stay = ({city, country, superHost, title, rating, maxGuests, type, beds, p
     )
 }
 
+Stay.defaultProps = {
+    city: 'unknown city',
+    country: 'Finland',
+    superhost: false,
+    title: 'Unknown title',
+    rating: 0,
+    beds: 0,
+    photo: '../default-stay.jpg'
+}
+
 export default Stay

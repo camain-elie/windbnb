@@ -1,22 +1,24 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
+import logo from '../assets/logo.svg'
+
 import './SearchBar.scss'
 
 class SearchBar extends Component {
-    constructor(fun){
-        super(fun)
+    constructor(props){
+        super(props)
         this.state = {
             location: '',
             guests: 0,
             adults: 0,
             children: 0,
             isActive: false,
-            searchFunction: this.props.searchFunction,
+            handleSearchClick: this.props.handleSearchClick,
         }
     }
 
-    handleSearchClick(e){
+    handleSearchbarClick(e){
         this.setState({ isActive: !this.state.isActive })
       
         e.stopPropagation()
@@ -60,9 +62,9 @@ class SearchBar extends Component {
         return (
             <div className={`searchbar searchbar${this.state.isActive ? '--active' : '--inactive'}`}>
 
-                <div className="searchbar__logo"><img src="../logo.svg" alt="logo windbnb"></img></div>
+                <div className="searchbar__logo"><img src={logo} alt="logo windbnb"></img></div>
             
-                <div className="searchbar__inputs" onClick={this.handleSearchClick.bind(this)}>
+                <div className="searchbar__inputs" onClick={this.handleSearchbarClick.bind(this)}>
                     <div className="searchbar__location">
                         <p className="searchbar__label">LOCATION</p>
                         <p className={`searchbar__location-text ${this.state.location ? '' : 'placeholder'}`}>{this.state.location ? `${this.state.location}, Finland` : 'Add location'}</p>
@@ -117,7 +119,7 @@ class SearchBar extends Component {
                         </div>
                     </div>
 
-                    <div className="searchbar__button" onClick={this.state.searchFunction(this.state.guests)}>
+                    <div className="searchbar__button" onClick={() => this.state.handleSearchClick(this.state.location, this.state.guests)}>
                         <i className="material-icons">search</i>
                         <p className="searchbar__button-text">Search</p>    
                     </div>
@@ -125,13 +127,13 @@ class SearchBar extends Component {
                 </div>
             
             </div>
-
+            
         )
     }
 }
 
 SearchBar.propTypes = {
-    searchFunction: PropTypes.func.isRequired,
+    handleSearchClick: PropTypes.func.isRequired,
 }
 
 
