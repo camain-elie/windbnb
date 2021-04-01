@@ -30,6 +30,7 @@ Stay.defaultProps = {
     country: 'Finland',
     superhost: false,
     title: 'Unknown title',
+    maxGuests: 0,
     rating: 0,
     beds: 0,
     photo: '../default-stay.jpg'

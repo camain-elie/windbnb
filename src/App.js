@@ -5,6 +5,7 @@ import './App.scss';
 
 import Stay from './components/Stay'
 import SearchBar from './components/SearchBar'
+import Footer from './components/Footer'
 
 
 class App extends Component {
@@ -28,9 +29,7 @@ class App extends Component {
     this.generateDisplayedStays("", 0)
   }
 
-  componentWillReceiveProps(){
-    
-  }
+ 
 
   generateStays(){
     
@@ -42,25 +41,26 @@ class App extends Component {
         photo={data.photo} />)
 
     })
-    console.log(staysList, 'stays generated in generateStays')
+    staysList.push(<Stay key={14} />)
+    
     return staysList
   }
 
   generateDisplayedStays(location, guests){
-    console.log(this.state.location, this.state.guests, 'generateDisplayedStays', location, guests)
+
     const displayedStays = this.state.stays.filter((stay) => {
 
-      return ((stay.props.city === location || location === '' ) && (stay.props.maxGuests >= this.state.guests))
+      return ((stay.props.city === location || location === '' ) && (stay.props.maxGuests >= guests))
     })
-    console.log( this.state.stays, this.state.displayedStays, 'generateDisplayedStays 2' )
+  
 
     this.setState({ displayedStays: displayedStays})
 
   }
 
-  searchFunc = (alocation, guests) => {
-    console.log(alocation, guests, ' in searchFunc')
-    this.setState({ location: alocation, guests: guests}, this.generateDisplayedStays(alocation, guests))
+  searchFunc = (location, guests) => {
+
+    this.setState({ location: location, guests: guests}, this.generateDisplayedStays(location, guests))
   }
 
  
@@ -77,10 +77,25 @@ class App extends Component {
             <p className="stays__number">{`${this.state.displayedStays.length} stay${this.state.displayedStays.length > 1 ? 's' : ''}`}</p>
           </div>
 
-          {this.state.displayedStays}
+          <div className="stays__content">
+            {this.state.displayedStays}
+          </div>
+          
+          
+          {!this.state.displayedStays.length &&
+            <div className="no-results">
+              <h2>No Results</h2>
+              
+              <p>
+                Sorry, we were unable to find any results matching your criteria.
+              </p>
+              <p>
+                Maybe you should try again with another destination or leave some of your friends home ! ;)
+              </p>
+            </div>}
         </div>
   
-        {console.log(this.state.stays, this.state.displayedStays, 'render')}
+        <Footer />
         
       </div>
     )

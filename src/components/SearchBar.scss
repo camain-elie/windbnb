@@ -120,15 +120,18 @@ $logo-color: #EB5757;
                     background: #FFFFFF;
                     border-color: $logo-color;
                 }
+                &--disabled{
+                    background: #e0e0e0;
+                    pointer-events: none;
+                }
             }
             &__display{
                 color: $dark-text-color;
-                width: 9px;
+                width: auto;
                 height: 18px;
                 font-weight: bold;
                 font-size: 14px;
-            
-                margin: 0 10px;
+                margin: 0 8px;
             }
         }
 
@@ -209,7 +212,7 @@ $logo-color: #EB5757;
                 transition: 2s
             }
             &__location, &__guests{
-                width: 140px;
+                width: 150px;
                 @include searchbar-transition;
             }
             &__location{

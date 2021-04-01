@@ -39,22 +39,30 @@ class SearchBar extends Component {
     }
     
     addAdultGuest(e){
+        this.state.adults < 20 ?
         this.setState({ adults: this.state.adults + 1}, this.updateGuests)
+        : console.log('too many adults')
         e.stopPropagation()
     }
 
     addChildGuest(e){
-        this.setState({ children: this.state.children + 1},this.updateGuests)
+        this.state.children < 20 ?
+            this.setState({ children: this.state.children + 1},this.updateGuests)
+            : console.log('too many children')
         e.stopPropagation()
     }
 
     removeAdultGuest(e){
+        this.state.adults > 0 ?
         this.setState({ adults: this.state.adults - 1}, this.updateGuests)
+        : console.log('too few adults')
         e.stopPropagation()
     }
 
     removeChildGuest(e){
+        this.state.children > 0 ?
         this.setState({ children: this.state.children - 1}, this.updateGuests)
+        : console.log('too few children')
         e.stopPropagation()
     }
 
@@ -103,18 +111,18 @@ class SearchBar extends Component {
                             <p className="label">Adults</p>
                             <p className="placeholder">Ages 13 or above</p>
                             <div className="number-button">
-                                <p className="number-button__variator" onClick={this.removeAdultGuest.bind(this)}>-</p>
+                                <p className={`number-button__variator ${this.state.adults < 1 ? 'number-button__variator--disabled' : ''}`} onClick={this.removeAdultGuest.bind(this)}>-</p>
                                 <p className="number-button__display">{this.state.adults}</p>
-                                <p className="number-button__variator" onClick={this.addAdultGuest.bind(this)}>+</p>
+                                <p className={`number-button__variator ${this.state.adults > 19 ? 'number-button__variator--disabled' : ''}`} onClick={this.addAdultGuest.bind(this)}>+</p>
                             </div>
                         </div>
                         <div className="searchbar__change-guests">
                             <p className="label">Children</p>
                             <p className="placeholder">Ages 2-12</p>
                             <div className="number-button">
-                                <p className="number-button__variator" onClick={this.removeChildGuest.bind(this)}>-</p>
+                                <p className={`number-button__variator ${this.state.children < 1 ? 'number-button__variator--disabled' : ''}`} onClick={this.removeChildGuest.bind(this)}>-</p>
                                 <p className="number-button__display">{this.state.children}</p>
-                                <p className="number-button__variator" onClick={this.addChildGuest.bind(this)}>+</p>
+                                <p className={`number-button__variator ${this.state.children > 19 ? 'number-button__variator--disabled' : ''}`} onClick={this.addChildGuest.bind(this)}>+</p>
                             </div>
                         </div>
                     </div>

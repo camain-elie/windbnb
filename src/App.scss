@@ -6,7 +6,7 @@
 
 
 .App{
-    margin: 0 100px;
+    margin: 0 20px;
 
 }
 
@@ -18,16 +18,36 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 90%;
+  
     margin: auto;
     &__header{
-        width: 100%;
+        width: 90%;
         display: flex;
         justify-content: space-between;
         align-content: center;
-        margin: 0 20px;
+        margin: 0 20px 40px 20px;
     }
     &__title, &__number{
         display: inline-block;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+    }
+    &__number{
+        position: relative;
+        top: 15px;
+    }
+    &__content{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.no-results{
+    h2{
+        margin: 40px 20px 80px 20px;
+    }
+    p{
+        margin: 40px;
     }
 }
