@@ -21,10 +21,26 @@ $logo-color: #EB5757;
 .searchbar{
     font-family: 'Mulish', sans-serif;
    
+    &__location-list, &__change-guests{
+        
+      pointer-events: none;
+      ul{
+          pointer-events: all;
+      }
+    }
+    
     
     &__inputs, &__logo{
         margin: 40px ;
+        position: relative;
+        
     }
+
+    &__inputs{
+        border-radius: 16px;
+        border-color: $logo-color;
+    }
+
     &__location, &__guests, &__button{
         box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
         display: inline-block;
@@ -110,6 +126,7 @@ $logo-color: #EB5757;
                 text-align: center;
                 color: $medium-text-color;
                 user-select: none;
+                pointer-events: all;
                 &:hover{
                     background: $hover-color;
                     cursor: pointer;
@@ -138,10 +155,13 @@ $logo-color: #EB5757;
     }
 
     &--active{
-        height: 400px;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
         @include searchbar-transition;
-        position: relative;
+        position: fixed;
         overflow: visible;
+        
         .searchbar__location, .searchbar__guests{
             width: 500px;
             @include searchbar-transition;
@@ -189,6 +209,24 @@ $logo-color: #EB5757;
                     animation: list-animation 0.3s ease-out both;
                 }
             }
+
+            &__background{
+                height: 400px;
+                width: 100%;
+                background: white;
+                position: absolute;
+                top: 0px;
+
+            }
+
+            &__filter{
+                height: 100%;
+                width: 100%;
+                background: rgba(79, 79, 79, 0.4);
+                
+
+                
+            }
         }
     }
 
@@ -209,7 +247,11 @@ $logo-color: #EB5757;
                 position: absolute;
                 top: 0;
                 right: 0;
-                transition: 2s
+                transition: 2s;
+                
+                &:hover{
+                    border: solid 1px $logo-color;
+                }
             }
             &__location, &__guests{
                 width: 150px;

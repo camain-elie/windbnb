@@ -19,9 +19,11 @@ class SearchBar extends Component {
     }
 
     handleSearchbarClick(e){
-        this.setState({ isActive: !this.state.isActive })
-      
         e.stopPropagation()
+        e.preventDefault()
+        this.setState({ isActive: !this.state.isActive })
+        console.log(e)
+        
     }
 
     setLocation(e){
@@ -69,6 +71,8 @@ class SearchBar extends Component {
     render(){
         return (
             <div className={`searchbar searchbar${this.state.isActive ? '--active' : '--inactive'}`}>
+
+                <div className="searchbar__background"></div>
 
                 <div className="searchbar__logo"><img src={logo} alt="logo windbnb"></img></div>
             
@@ -133,7 +137,10 @@ class SearchBar extends Component {
                     </div>
                     
                 </div>
-            
+
+                <div className="searchbar__filter" onClick={this.handleSearchbarClick.bind(this)}>
+
+                </div>
             </div>
             
         )
