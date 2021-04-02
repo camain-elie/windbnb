@@ -74,6 +74,7 @@ class App extends Component {
         <div className="stays">
           <div className="stays__header">
             <h1 className="stays__title">Stays in Finland</h1>
+            <div className="stays__clearblock"></div>
             <p className="stays__number">{`${this.state.displayedStays.length} stay${this.state.displayedStays.length > 1 ? 's' : ''}`}</p>
           </div>
 
