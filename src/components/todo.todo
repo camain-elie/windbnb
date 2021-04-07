@@ -6,7 +6,7 @@
 - [x] control guests value in searchbar and create a visual cue on guests button
 - [x] figure out what's going on with the assets path
 - [x] use dataset instead of this ugly regexp to set location
-- [] mobile/adaptative view
+- [x] mobile/adaptative view
 - [x] applying search parameters
 - [x] default values for stay
 - [x] fix triggered search click when searchbar init
@@ -17,3 +17,4 @@
 - [x] add empty stay
 - [x] add a footer
 - [x] change the searchbar activation function
+- [] visual details to improve : searchbar and header alignment with the stays.
