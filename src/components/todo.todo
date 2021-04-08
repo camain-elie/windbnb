@@ -10,11 +10,11 @@
 - [x] applying search parameters
 - [x] default values for stay
 - [x] fix triggered search click when searchbar init
-- [] clean the code
+- [x] clean the code
 - [x] debug maxGuests stays selection
 - [x] message when no stay found
 - [x] center multidigit guest button
 - [x] add empty stay
 - [x] add a footer
 - [x] change the searchbar activation function
-- [] visual details to improve : searchbar and header alignment with the stays.
+- [x] visual details to improve : searchbar and header alignment with the stays.

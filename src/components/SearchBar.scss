@@ -12,31 +12,24 @@ $logo-color: #EB5757;
     transition: 0.3s;
 }
 
-
 *{
     padding: 0;
     margin: 0;
 }
 
+// properties shared by both the active and inactive states of the searchbar
 .searchbar{
-    
     top: 0px;
     font-family: 'Mulish', sans-serif;
    
     &__location-list, &__change-guests{
-        
-      pointer-events: none;
-      ul{
-          pointer-events: all;
-      }
+        pointer-events: none;
+        ul{ pointer-events: all; }
     }
-    
     
     &__inputs, &__logo{
         margin: 40px 25px;
-        position: relative;
-
-        
+        position: relative;    
     }
 
     &__inputs{
@@ -51,22 +44,21 @@ $logo-color: #EB5757;
         box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
         display: inline-block;
         height: 55px;
-
     }
+
     &__location{
         border-radius: 16px 0 0 16px;
         
         &-list{
             list-style: none;
             margin: 40px 0;
+
             ul{
-               
-               
                 font-size: 14px;
                 margin: 25px 0 10px 20px;
-
                 color: #4F4F4F;
                 cursor: pointer;
+
                 i{
                     margin-right: 8px;
                     position: relative;
@@ -75,22 +67,23 @@ $logo-color: #EB5757;
             }
         }
     }
+
     &__button{
+        cursor: default;
         border-radius: 0 16px 16px 0;
-        p, i {
-            display: inline-block;
-            
-        }
+
         p{
             position: relative;
             top: 8px;
-            
+            display: inline-block;
         }
+        
         i{
             margin-right: 8px;
             position: relative;
             top: 50%;
             transform: translateY(-50%);
+            display: inline-block;
         }
     }
 
@@ -100,29 +93,31 @@ $logo-color: #EB5757;
         font-size: 9px;
         line-height: 11px;
     }
+
     .placeholder{
         color: $light-text-color;
-
     }
         
-    
-
     &__change-guests{
         width: 140px;
         margin-top: 30px;
+
         .label{
             color: $dark-text-color;
             font-weight: bold;
         }
+
         .placeholder{
             color: $light-text-color;
             font-weight: bold;
             margin: 0 0 14px 0;
         }
+
         .number-button{
             &__variator, &__display{
                 display: inline-block;
             }
+
             &__variator{
                 width: 23px;
                 height: 23px;
@@ -133,21 +128,25 @@ $logo-color: #EB5757;
                 color: $medium-text-color;
                 user-select: none;
                 pointer-events: all;
+
                 &:hover{
                     background: $hover-color;
                     cursor: pointer;
                 }
+
                 &:active{
                     color: $logo-color;
                     cursor: pointer;
                     background: #FFFFFF;
                     border-color: $logo-color;
                 }
+
                 &--disabled{
                     background: #e0e0e0;
                     pointer-events: none;
                 }
             }
+
             &__display{
                 color: $dark-text-color;
                 width: auto;
@@ -157,26 +156,19 @@ $logo-color: #EB5757;
                 margin: 0 8px;
             }
         }
-
     }
 
+    //properties when the searchbar is in active state
     &--active{
 
-        + .stays{margin-top: 180px;}
+        + .stays{ margin-top: 180px; }
 
         z-index: 1;
         height: 100%;
         width: 100%;
-        @include searchbar-transition;
         position: fixed;
         overflow: visible;
-        /*&::before{
-            content: ' ';
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100px;
-        }*/
+        @include searchbar-transition;
 
         .searchbar__location, .searchbar__guests{
             width: 30%;
@@ -185,17 +177,14 @@ $logo-color: #EB5757;
 
         .searchbar{
             &__inputs{
-                
                 flex-wrap: wrap;
                 position: absolute;
                 top: 0;
-                margin-left: 200px;
-               
-                   
-                    justify-content: left;
-                
+                margin-left: 200px;   
+                justify-content: left;
                 @include searchbar-transition;
             }
+
             &__button{
                 color: white;
                 background: $logo-color;
@@ -210,19 +199,20 @@ $logo-color: #EB5757;
                     @include searchbar-transition;
                 }
             }
-            &__label, &__guests-text, &__location-text{
-                margin: 2px 5px 0 20px;
-            }
+
+            &__label, &__guests-text, &__location-text{ margin: 2px 5px 0 20px; }
+
             &__guests{
                 border-radius: 0 16px 16px 0;
                 @include searchbar-transition;
             }
+
             &__change-guests{
                 animation: list-animation 0.3s ease-out both;
                 margin: 45px 0 0 20px;
             }
+
             &__location-list{
-                
                 ul{
                     animation: list-animation 0.3s ease-out both;
                 }
@@ -234,11 +224,6 @@ $logo-color: #EB5757;
                 background: white;
                 position: absolute;
                 top: 0px;
-               &::after{
-                   width: 100%;
-                   height: 100px;
-                   background: red;
-               }
             }
 
             &__filter{
@@ -249,50 +234,34 @@ $logo-color: #EB5757;
                 top: 297px;
                 z-index: -1;
                 background: rgba(79, 79, 79, 0.4);
-                
                 @include searchbar-transition
-                
-            }
-
-            &__logo{
-                width: 80px;
-                margin-left: 30px;
             }
         }
     }
 
+    //properties when the searchbar is in active state
     &--inactive{
         display: flex;
         justify-content: space-between;
         position: relative;
         width: 100%;
-        height: 180px;
-
-        
+        height: 180px;        
         overflow: hidden;
-
-
 
         .searchbar{
             &__inputs{
                 display: flex;
                 flex-wrap: wrap;
-                
                 @include searchbar-transition;
                 
-                
                 .searchbar__location,.searchbar__guests, .searchbar__button{
-                    
                     &:hover{
                         border: solid 1px $logo-color;
                         transition: 0s;
                     }
-                    
-                    
                 }
-                    
-                
             }
+
             &__location, &__guests{
                 width: 150px;
                 @include searchbar-transition;
@@ -302,8 +271,8 @@ $logo-color: #EB5757;
                 margin: 16px 5px 0 20px;
 
             }
-            &__change-guests, &__location-list, &__label{
             
+            &__change-guests, &__location-list, &__label{
                 display: none;
                 @include searchbar-transition;
             }
@@ -313,16 +282,15 @@ $logo-color: #EB5757;
                 @include searchbar-transition;
                 text-align: center;
                 color: $logo-color;
+
                 p{
                     display: none;
                     @include searchbar-transition;
                     font-size: 16px;
-                    
                 }
+
                 i{
-                
                     @include searchbar-transition;
-                    
                 }
             }
         }
@@ -333,21 +301,16 @@ $logo-color: #EB5757;
 
 @media (min-width: 601px) and (max-width: 960px){
     .searchbar{
-      
         &--active{
            .searchbar__inputs{
                 position: absolute;
                 top: 50px;
                 justify-content: center;
             }
-            .searchbar__background{
-                height: 450px;
-               
-            }
-            .searchbar__inputs{
-                
-                margin-left: 0;
-            }
+
+            .searchbar__background{ height: 450px; }
+
+            .searchbar__inputs{ margin-left: 0; }
         }
     }
 }
@@ -363,12 +326,12 @@ $logo-color: #EB5757;
 
         &--active, &--inactive{
             .searchbar{
-
                 &__logo{
                     display: block;
                     position: absolute;
                     left: 0;
                 }
+
                 &__inputs{
                     display: flex;
                     justify-content: center;
@@ -385,7 +348,6 @@ $logo-color: #EB5757;
         }
 
         &--active{
-            
             .searchbar{
                 &__background{
                     height: 700px;
@@ -397,24 +359,24 @@ $logo-color: #EB5757;
                     width: 90%;
                     border-radius: 16px;
                 }
+
                 &__location{
                     &-list{
-                        ul{
-                            margin: 10px 0 10px 40px;
-
-                        }
+                        ul{ margin: 10px 0 10px 40px; }
                     }
                 }
+                
                 &__guests{
                     position: relative;
                     top: 270px;
-
                 }
+
                 &__change-guests{
                     width: auto;
                     display: inline-block;
                     margin: 40px 5%;
                 }
+
                 &__button{
                     position: relative;
                     top: 420px;
@@ -429,32 +391,19 @@ $logo-color: #EB5757;
     .searchbar{
         &--inactive{
             .searchbar{
-                &__location, &__guests{
-                    
-                    width: 37%;
-                }
+                &__location, &__guests{ width: 37%; }
             }
         }
-        
     }
-}
-
-
-:focus{
-    outline: none;
 }
 
 @keyframes list-animation {
     0%{
-       
-  
         position: relative;
         top: -500px;
     }
 
     100%{
-       
-    
         position: relative;
         top: 0px;
     }

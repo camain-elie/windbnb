@@ -5,19 +5,16 @@
 
 #root{
     display: flex;
+
     @media (min-width: 1300px){
         justify-content: center;
     }
-    
 }
 
 .App{
    width: 1300px;
    overflow: visible;
-   
-
 }
-
 
 .searchbar{
     height: 100%;
